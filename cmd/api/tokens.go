@@ -5,11 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/http"
-	"time"
-
 	"github.com/pascaldekloe/jwt"
 	"golang.org/x/crypto/bcrypt"
+	"net/http"
+	"time"
 )
 
 var validUser = models.User{
@@ -44,7 +43,7 @@ func (app *application) signIn(rw http.ResponseWriter, r *http.Request) {
 	claims.Subject = fmt.Sprint(validUser.ID)
 	claims.Issued = jwt.NewNumericTime(time.Now())
 	claims.NotBefore = jwt.NewNumericTime(time.Now())
-	claims.Expires = jwt.NewNumericTime(time.Now().Add(24*time.Hour))
+	claims.Expires = jwt.NewNumericTime(time.Now().Add(24 * time.Hour))
 	claims.Issuer = "mydomain.com"
 	claims.Audiences = []string{"mydomain.com"}
 

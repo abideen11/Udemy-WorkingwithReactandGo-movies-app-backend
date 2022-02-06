@@ -137,7 +137,7 @@ func (app *application) editMovie(rw http.ResponseWriter, r *http.Request) {
 	if payload.ID != "0" {
 		id, _ := strconv.Atoi(payload.ID)
 		m, _ := app.models.DB.Get(id)
-		movie = *m 
+		movie = *m
 		movie.UpdatedAt = time.Now()
 	}
 
